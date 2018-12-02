@@ -60,6 +60,9 @@ allData <- merge(testData, trainData, all = TRUE)
 ##with the average of each variable for each activity and each subject.
 avgData <- allData %>% group_by(Activity, Subject) %>% summarise_all(funs(mean))
 
+##export the tidy dataset
+write.table(avgData, paste(rootPath,"result.txt",sep = ""), row.names = FALSE)
+
 ##clean all data structures not needed anymore
 rm(actlabels)
 rm(collabels)
